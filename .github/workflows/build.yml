@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      CONTAINER_NAME: morawskioz/ryanair-monitor
+      CONTAINER_TAG: 
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Add CONTAINER_TAG env with commit sha for uniq tag
+        run: echo "CONTAINER_TAG=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
+      - name: Docker Login
+        uses: docker/login-action@v1.10.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image with latest code
+        run: docker build -t $CONTAINER_NAME:$CONTAINER_TAG . --build-arg app_env=production
+
+      - name: Push image to docker registry
+        run: docker push $CONTAINER_NAME:$CONTAINER_TAG

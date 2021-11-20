@@ -1,0 +1,7 @@
+*.env
+!prod.env
+.gitignore
+.git
+.github
+*.pem
+cmd/cmd
