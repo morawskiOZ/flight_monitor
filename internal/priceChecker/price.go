@@ -86,7 +86,7 @@ func (pc *client) newObservableTask(t Task) *observableTask {
 	priceClient := ryanair.NewRyanairClient(ryanair.WithPriceEndpoint(t.StartDate, t.EndDate, t.Destination, t.Origin))
 	defaultLow := 9999.99
 	ot := observableTask{
-		ticker:      time.NewTicker(5 * time.Second),
+		ticker:      time.NewTicker(60 * time.Minute),
 		Task:        t,
 		checksCount: 0,
 		low:         defaultLow,
