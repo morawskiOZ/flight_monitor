@@ -101,7 +101,7 @@ func (pc *client) runTask(ot *observableTask) error {
 	defer pc.wg.Done()
 
 	price, err := ot.GetPrice()
-	fmt.Println(price)
+
 	if err != nil {
 		return err
 	}
