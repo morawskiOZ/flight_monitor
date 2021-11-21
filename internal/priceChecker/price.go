@@ -3,6 +3,7 @@ package priceChecker
 import (
 	"fmt"
 	"math"
+	"os"
 	"sync"
 	"time"
 
@@ -150,7 +151,10 @@ func (pc *client) Run(tasks []Task) {
 		for _, ot := range pc.observableTasks {
 			ot.ticker.Stop()
 			pc.close <- true
-			pc.mailClient.Send(ot.Recipient, ot.Subject, "Error occurred, server is shouting down")
+
+			if appEnv := os.Getenv("APP_ENV"); appEnv == "production" {
+				pc.mailClient.Send(ot.Recipient, ot.Subject, "Price no longer observed, server is shouting down")
+			}
 		}
 	}
 	pc.wg.Wait()
