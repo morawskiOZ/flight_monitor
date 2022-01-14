@@ -1,4 +1,4 @@
-# Ryainar price monitor
+# Price monitor
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -22,7 +22,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Go program that monitors particular flight price and send email notification when price is below set price.
+Go program that monitors particular flight price and send email notification when price is below set price. For now only compatible with Ryanair API.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
