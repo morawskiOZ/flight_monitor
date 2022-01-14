@@ -3,3 +3,4 @@
 *.pem
 .vscode
 cmd/cmd
+.DS_Store
