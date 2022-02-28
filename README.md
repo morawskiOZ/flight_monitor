@@ -51,3 +51,8 @@ Go version > 1.16 installed.
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+### Running docker on server with custom envs
+```
+docker run -e EMAIL_PASS="" -e EMAIL_LOGIN="" -e EMAIL_RECIPIENT="" dockerTagOrID
+```

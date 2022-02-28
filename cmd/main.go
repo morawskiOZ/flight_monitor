@@ -34,13 +34,13 @@ func main() {
 	pc := priceChecker.NewPriceChecker(priceChecker.WithMailClient(mc), priceChecker.WithSignalChannel(so.SignalChanel))
 	t := []priceChecker.Task{
 		{
-			Destination: "SVQ",
-			Origin:      "KRK",
-			StartDate:   time.Date(2022, 02, 16, 0, 0, 0, 0, time.Now().Location()),
-			EndDate:     time.Date(2022, 02, 23, 0, 0, 0, 0, time.Now().Location()),
-			Treshold:    400,
+			Destination: "BGY",
+			Origin:      "WRO",
+			StartDate:   time.Date(2022, 06, 10, 0, 0, 0, 0, time.Now().Location()),
+			EndDate:     time.Date(2022, 06, 13, 0, 0, 0, 0, time.Now().Location()),
+			Treshold:    300,
 			Recipient:   config.EmailRecipient,
-			Subject:     "Sevilla route monitor",
+			Subject:     "Bergamo route monitor",
 		},
 		{
 			Destination: "MLA",
